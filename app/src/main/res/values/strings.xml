@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Fire Base</string>
+    <string name="valores">INGRESA LOS SIGUENTES VALORES</string>
+    <string name="matricula">Ingresa tu Matricula</string>
+    <string name="nombre">Ingresa tu Nombre</string>
+    <string name="apellido">Ingresa tu Apellido</string>
+    <string name="registrar">Registrar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="eliminar">Eliminar</string>
+</resources>

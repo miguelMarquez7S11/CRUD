@@ -18,18 +18,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/matricula"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="@string/matricula"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <EditText
         android:id="@+id/nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +26,7 @@
         android:ems="10"
         android:hint="@string/nombre"
         android:inputType="textPersonName"
+        android:maxLength="@integer/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/matricula" />
 
@@ -50,6 +39,7 @@
         android:ems="10"
         android:hint="@string/apellido"
         android:inputType="textPersonName"
+        android:maxLength="@integer/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
@@ -69,26 +59,22 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:text="@string/actualizar"
+        android:layout_marginEnd="60dp"
+        android:onClick="mostrar"
+        android:text="@string/mostar"
         app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:text="@string/eliminar"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/mensaje"
+    <EditText
+        android:id="@+id/matricula"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:hint="@string/matricula"
+        android:inputType="number"
+        android:maxLength="@integer/matricula"
+        app:layout_constraintEnd_toEndOf="@+id/nombre"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,8 +24,9 @@ import java.util.List;
 public class mostrar extends AppCompatActivity
 {
     private List<Persona> listaAlumnos = new ArrayList<Persona>();
-    MainActivity m = new MainActivity();
-    EditText matricula, nombre, apellido;
+    Metodos m = new Metodos();
+    EditText  nombre, apellido;
+    TextView matricula;
     ListView lista;
     Persona seleccion;
 
@@ -35,11 +37,11 @@ public class mostrar extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar);
         lista = findViewById(R.id.mos);
-        matricula =  findViewById(R.id.mati);
+        matricula =  findViewById(R.id.textView3);
         nombre =  findViewById(R.id.nombre);
         apellido =  findViewById(R.id.apellido);
 
-        referencia = m.iniciarDB();
+        referencia = m.iniciarDB(mostrar.this);
         mostrarDatos();
         select();
 
@@ -47,36 +49,20 @@ public class mostrar extends AppCompatActivity
 
     public void Eliminar(View v)
     {
-        if(validar()) {
-            Persona  alumno =  new Persona(apellido.getText().toString(), matricula.getText().toString(),nombre.getText().toString());
-            referencia.child("Alumno").child(matricula.getText().toString()).removeValue();
-            Toast.makeText(this,"Eliminado Correctamente",Toast.LENGTH_SHORT).show();
+        boolean resultado;
+        resultado = m.eliminar(matricula.getText().toString(), referencia, mostrar.this);
+        if (resultado){
             limpiar();
-        }else {
-            Toast.makeText(this,"Verifica los Campos",Toast.LENGTH_SHORT).show();
         }
     }
 
     public void Actualizar(View v)
     {
-        if(validar()) {
-            Persona  alumno =  new Persona(apellido.getText().toString(), matricula.getText().toString(),nombre.getText().toString());
-            referencia.child("Alumno").child(matricula.getText().toString()).setValue(alumno);
-            Toast.makeText(this,"Actualizado Correctamente",Toast.LENGTH_SHORT).show();
+        boolean resultado;
+        resultado = m.inserccion(matricula.getText().toString(), nombre.getText().toString(), apellido.getText().toString(), referencia, mostrar.this);
+        if (resultado){
             limpiar();
-        }else {
-            Toast.makeText(this,"Verifica los Campos",Toast.LENGTH_SHORT).show();
         }
-    }
-
-    public boolean validar()
-    {
-        boolean resultado = true;
-        if (matricula.getText().toString().isEmpty()  || nombre.getText().toString().isEmpty() || apellido.getText().toString().isEmpty())
-        {
-            resultado = false;
-        }
-        return resultado;
     }
 
     public void limpiar()
